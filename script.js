@@ -14,8 +14,7 @@ var searchTerm = "";
 
 //optional key
 var start_year, end_year;
-start_year = "19000101";
-end_year = "20171230";
+
 
 var numberOfRecordsToRetrieve = 0;
 var mainResponseObject;
@@ -29,7 +28,32 @@ $(document).ready(function() {
 
 function retrieveDatafromHTML() {
     searchTerm = $("#search_term").val();
+    if ($("#retrieve").val() > 10) {
+        alert("No more than 10 recerds at once")
+    }
+    if ($("#retrieve").val() == "") {
+        numberOfRecordsToRetrieve = 10;
+    }
+    else {
+        numberOfRecordsToRetrieve = $("#retrieve").val()
+    }
     console.log("SearchTerm: " + searchTerm);
+    if ($("#startyear").val() == "") {
+        start_year = "19000101";
+    }
+    else {
+        start_year = $("#startyear").val() + "0101";
+
+    }
+    if ($("#endyear").val() == "") {
+        end_year = "20171230";
+    }
+    else {
+        console.log("New endyear");
+        end_year = $("#endyear").val() + "1230";
+    }
+
+
 }
 
 function startSearch() {
@@ -38,15 +62,23 @@ function startSearch() {
     mainResponseObject = null;
     retrieveDatafromHTML();
     console.log("startSeact button activated");
-    url += '?' + $.param({
-        'api-key': api_key,
-        'q': searchTerm,
-        'begin_date': start_year,
-        'end_date': end_year,
-        'fl': "web_url, snippet, lead_paragraph, headline, pub_date"
-    });
+    // url += '?' + $.param({
+    //     'api-key': api_key,
+    //     'q': searchTerm,
+    //     'begin_date': start_year,
+    //     'end_date': end_year,
+    //     'fl': "web_url, snippet, lead_paragraph, headline, pub_date"
+    // });
+
     $.ajax({
         url: url,
+        data: {
+            'api-key': api_key,
+            'q': searchTerm,
+            'begin_date': start_year,
+            'end_date': end_year,
+            'fl': "web_url, snippet, lead_paragraph, headline, pub_date"
+        },
         method: 'GET',
     }).done(function(result) {
         mainResponseObject = result;
@@ -64,7 +96,7 @@ function startSearch() {
 function createNewParagraph() {
     console.log("createNewParagraph:");
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < numberOfRecordsToRetrieve; i++) {
         var paragraph = $("<div>");
 
         paragraph.attr("class", "paragraphClass");
@@ -89,9 +121,11 @@ function createNewParagraph() {
 
         $("#mainField").append(paragraph);
     }
-
 }
 
 function cleanResultsField() {
     $("#mainField").html("");
+    searchTerm = "";
+    numberOfRecordsToRetrieve = 0;
+
 }
