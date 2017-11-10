@@ -21,7 +21,7 @@ var numberOfRecordsToRetrieve = 0;
 var mainResponseObject;
 
 $(document).ready(function() {
-    $("")
+    $(".resultstyle").hide()
     console.log("Document ready to work!")
     $("#search_button").click(startSearch);
     $("#reset").click(cleanResultsField);
@@ -34,6 +34,7 @@ function retrieveDatafromHTML() {
 
 function startSearch() {
     //AJAX request
+    $(".resultstyle").show()
     mainResponseObject = null;
     retrieveDatafromHTML();
     console.log("startSeact button activated");
