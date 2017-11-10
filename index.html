@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device - width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NYTimes</title>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified material-design CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified material-design JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css" type="text/css" />
+
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header-->
+        <div class="newtimes">
+            <div class="row">
+                <div class="col s12">
+                    <nav class="nav-extended  deep-purple darken-3">
+                        <div class="nav-wrapper">
+                            <img id="logo" src="http://1000logos.net/wp-content/uploads/2017/04/New-York-Times-Logo.png"></img>
+
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!--Search form -->
+        <div class="wrapper">
+            <div class="row">
+                <div class="headerone  blue-grey darken-3">Search Parameters</div>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="" id="search_term" type="text" class="validate">
+                            <label for="Searcch Term">Search term</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="" id="retrieve" type="text" class="validate">
+                            <label for="Number Retrieve">Number of Records to Retrieve</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="" id="startyear" type="text" class="validate">
+                            <label for="Start Year):">Start Year (Optional):</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="rowstyle">
+                            <div class="input-field col s12">
+                                <input placeholder="" id="endyear" type="text" class="validate">
+                                <label for="End Year :">End Year (Optional):</label>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <button type="button" class="left" id="search_button">Search</button>
+
+                                    <button type="button" class="left" id="reset">Clear Results</button>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--Search form ends here-->
+        <!-- body -->
+
+        <div class="resultstyle">
+            <div class="row">
+                <div class="col s12" id="mainField">
+                    <h1>Result's</h1>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
+</html>
